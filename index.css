@@ -1,0 +1,192 @@
+body{
+     margin: 0;
+     padding: 0;
+}
+ 
+nav{
+    display: flex;
+    
+}
+
+#div1{
+    text-align: center;
+    font-size: 20px;
+    /* background-color: #001d39; */
+    background: linear-gradient(135deg, #BDD8E9, #7BBDE8, #6EA2B3, #49769F, #0A4174);
+    /* background: linear-gradient(160deg, #BDD8E9 0%, #7BBDE8 30%, #6EA2B3 60%, #49769F 100%); */
+    /* background: linear-gradient(to bottom right, #BDD8E9, #4E8EA2, #001D39); */
+    color: aliceblue;
+    /* height: 1000px; */
+    width: 100%;
+    padding-top: 40px;
+}
+#Sign{
+    /* margin-top: 2px; */
+    margin-left: 85%;
+    color: antiquewhite;
+}
+
+div a{
+    margin-top: 50px;
+    text-decoration: none;
+}
+#DivP{
+    height: 50px;
+    width: 220px;
+    background-color: darkgrey;
+    border-radius: 30px;
+    font-size: 15px;
+    margin: 20px auto; 
+    text-align: center; 
+    line-height: 50px;  
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 600px; 
+  height: 350px;      
+  overflow: hidden;
+  margin: 0 auto;
+}
+.slide {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: translateY(-100%); 
+  opacity: 0;
+  animation: slideDown 12s linear infinite;
+}
+
+
+.slide:nth-child(1){ animation-delay: 0s; }
+.slide:nth-child(2){ animation-delay: 4s; }
+.slide:nth-child(3){ animation-delay: 8s; }
+
+@keyframes slideDown {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  8%   { transform: translateY(0%); opacity: 1; }   
+  33%  { transform: translateY(0%); opacity: 1; }   
+  41%  { transform: translateY(100%); opacity: 0; } 
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+
+
+#Div2{
+    background-image: url(div2img1.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;   
+    background-position: center; 
+    height: 90vh;           
+    width: 100%;    
+    margin-top: 0%;      
+}
+
+
+#Div2 div{
+     margin-left: 650px; 
+}
+
+
+
+#services{
+    color: #7bbde8;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+.sub-title{
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 20px;
+}
+.sub-title span{
+    color:#49769f;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.services-list div {
+    background-color: transparent;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 13px;
+    border-right: 10px;
+    border-radius: 20px;
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px #7bbde8,
+                1px 1px 40px #7bbde8;
+}
+.services-list div h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.services-list div h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.container{
+    padding:90px ;
+    background: linear-gradient(160deg, #BDD8E9 0%, #7BBDE8 30%, #6EA2B3 60%, #49769F 100%);
+    /* background: linear-gradient(to bottom right, #BDD8E9, #4E8EA2, #001D39); */
+
+    
+}
+.services-list div a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+
+
+}.Click {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #bdd8e9;  
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 2s ease forwards;
+    box-shadow: 0 0 5px #7bbde8, 0 0 5px #7bbde8;
+
+}
+
+.Click:hover{
+    box-shadow: 0 0 5px #7bbde8,
+                0 0 25px #7bbde8,
+                0 0 50px #7bbde8,
+                0 0 100px #7bbde8,
+                0 0 200px #7bbde8;
+}
+.services-list div:hover{
+    transform: translateY(-10px);
+}
+@keyframes slideTop {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+
+
+#B-type1{
+    background-image: url(img3.jpeg);
+}
+#B-type2{
+    background-image: url(img3.jpeg);
+}
+#B-type3{
+    background-image: url(img3.jpeg);
+}
