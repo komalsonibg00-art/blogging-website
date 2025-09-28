@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronics & Gadgets Reviews</title>
+  <link rel="stylesheet" href="electronics.css">
+  <style>
+    .review-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 5px 0;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .delete-review-btn {
+      border: none;
+      background: transparent;
+      color: red;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Electronics & Gadgets Reviews</h1>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>📱 Electronics & Gadgets</h2>
+      <div class="grid" id="cards-container">
+        <!-- Static Product 1 -->
+        <div class="card" data-type="product" data-name="Smart TV">
+          <div class="card-image">
+            <img src="./photo/tv.avif" alt="Smart TV">
+          </div>
+          <div class="card-content">
+            <h3>Smart TV</h3>
+            <p>Why a Smart TV Is a Smart Choice in 2025...</p>
+            <div class="reviews-list"><p>No reviews yet.</p></div>
+            <div class="review-section">
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static Product 2 -->
+        <div class="card" data-type="product" data-name="Smart Watch">
+          <div class="card-image">
+            <img src="./photo/watch.jpeg" alt="Smart Watch">
+          </div>
+          <div class="card-content">
+            <h3>Smart Watch</h3>
+            <p>⌚ Why a Smart Watch Is More Than Just a Watch...</p>
+            <div class="reviews-list"><p>No reviews yet.</p></div>
+            <div class="review-section">
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static Product 3 -->
+        <div class="card" data-type="product" data-name="Headphones">
+          <div class="card-image">
+            <img src="./photo/headphone.jpg" alt="Headphones">
+          </div>
+          <div class="card-content">
+            <h3>Headphones</h3>
+            <p>🎧 Elevate Your Sound with the Right Headphones...</p>
+            <div class="reviews-list"><p>No reviews yet.</p></div>
+            <div class="review-section">
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Blog System -->
+  <div class="blog-system">
+    <h2>Write a Blog</h2>
+    <input type="text" id="title" placeholder="Blog Title">
+    <textarea id="content" rows="5" placeholder="Write your blog..."></textarea>
+    <input type="file" id="image" accept="image/*">
+    <button onclick="addBlog()">Publish</button>
+  </div>
+
+  <script>
+    // =============== REVIEW SYSTEM ===============
+    function createReviewElement(text, type, parentKey, index = null) {
+      const div = document.createElement("div");
+      div.className = "review-item";
+
+      const span = document.createElement("span");
+      span.textContent = "📝 " + text;
+
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete-review-btn";
+      delBtn.textContent = "❌";
+
+      // Delete review from DOM + localStorage
+      delBtn.addEventListener("click", () => {
+        div.remove();
+        if (type === "product") {
+          let key = "product_" + parentKey;
+          let reviews = JSON.parse(localStorage.getItem(key)) || [];
+          reviews = reviews.filter(r => r !== text);
+          localStorage.setItem(key, JSON.stringify(reviews));
+          if (reviews.length === 0) {
+            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+          }
+        } else if (type === "blog") {
+          let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+          let blog = blogs.find(b => b.id == parentKey);
+          if (blog) {
+            blog.reviews = blog.reviews.filter(r => r !== text);
+            localStorage.setItem("blogs", JSON.stringify(blogs));
+          }
+          if (div.parentElement.children.length === 0) {
+            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+          }
+        }
+      });
+
+      div.appendChild(span);
+      div.appendChild(delBtn);
+      return div;
+    }
+
+    function submitReview(button) {
+      const card = button.closest(".card");
+      const textarea = card.querySelector("textarea");
+      const reviewList = card.querySelector(".reviews-list");
+      const reviewText = textarea.value.trim();
+
+      if (!reviewText) {
+        alert("Please write a review!");
+        return;
+      }
+
+      const type = card.dataset.type;
+      const name = card.dataset.name;
+
+      // Add to DOM
+      if (reviewList.querySelector("p") && reviewList.querySelector("p").innerText === "No reviews yet.") {
+        reviewList.innerHTML = "";
+      }
+      reviewList.appendChild(createReviewElement(reviewText, type, name));
+
+      textarea.value = "";
+
+      // Save to localStorage
+      if (type === "product") {
+        let key = "product_" + name;
+        let reviews = JSON.parse(localStorage.getItem(key)) || [];
+        reviews.push(reviewText);
+        localStorage.setItem(key, JSON.stringify(reviews));
+      } else if (type === "blog") {
+        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        let index = blogs.findIndex(b => b.id == name);
+        if (index > -1) {
+          blogs[index].reviews.push(reviewText);
+          localStorage.setItem("blogs", JSON.stringify(blogs));
+        }
+      }
+    }
+
+    function loadReviews() {
+      // Products
+      document.querySelectorAll(".card[data-type='product']").forEach(card => {
+        let name = card.dataset.name;
+        let reviewList = card.querySelector(".reviews-list");
+        let key = "product_" + name;
+        let reviews = JSON.parse(localStorage.getItem(key)) || [];
+        reviewList.innerHTML = reviews.length > 0
+          ? ""
+          : "<p>No reviews yet.</p>";
+        reviews.forEach(r => {
+          reviewList.appendChild(createReviewElement(r, "product", name));
+        });
+      });
+
+      // Blogs
+      displayBlogs();
+    }
+
+    // =============== BLOG SYSTEM ===============
+    function addBlog() {
+      let title = document.getElementById("title").value.trim();
+      let content = document.getElementById("content").value.trim();
+      let imageInput = document.getElementById("image").files[0];
+
+      if (!title || !content) {
+        alert("Please write something!");
+        return;
+      }
+
+      let id = Date.now();
+
+      if (imageInput) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+          saveBlog(id, title, content, e.target.result);
+        }
+        reader.readAsDataURL(imageInput);
+      } else {
+        saveBlog(id, title, content, null);
+      }
+    }
+
+    function saveBlog(id, title, content, image) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs.unshift({ id, title, content, image, reviews: [] });
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+
+      // Clear form
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("image").value = "";
+    }
+
+    function deleteBlog(id) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs = blogs.filter(b => b.id != id);
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+    }
+
+    function displayBlogs() {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let container = document.getElementById("cards-container");
+
+      // Remove old blogs
+      container.querySelectorAll(".card[data-type='blog']").forEach(el => el.remove());
+
+      blogs.forEach(blog => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.dataset.type = "blog";
+        div.dataset.name = blog.id;
+
+        div.innerHTML = `
+          <div class="card-image">
+            ${blog.image ? `<img src="${blog.image}" alt="${blog.title}">` : ""}
+          </div>
+          <div class="card-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.content}</p>
+            <div class="reviews-list">
+              ${blog.reviews.length === 0 ? "<p>No reviews yet.</p>" : ""}
+            </div>
+            <div class="review-section">
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+              <button class="btn" style="background:#c62828;margin-top:10px;" onclick="deleteBlog(${blog.id})">Delete Blog</button>
+            </div>
+          </div>
+        `;
+
+        // Add saved reviews
+        let reviewList = div.querySelector(".reviews-list");
+        blog.reviews.forEach(r => {
+          reviewList.appendChild(createReviewElement(r, "blog", blog.id));
+        });
+
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = loadReviews;
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

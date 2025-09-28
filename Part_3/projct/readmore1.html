@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="readmore1.css">
+</head>
+
+<body>
+  <header>
+    <h1>CARS Review</h1>
+  </header>
+
+  <!-- Static Cars Section -->
+  <div class="container">
+    <section>
+      <h2>Hundai Creta</h2>
+      <div class="grid static-cards">
+        <div class="card">
+          <div class="card-image">
+            <img src="creta.jpg" alt="creta">
+          </div>
+          <div class="card-content">
+            <h3>hundai car</h3>
+            <p>
+              The Hyundai Creta is a popular mid-size SUV known for its stylish design and comfort. It comes with petrol, diesel, and turbo engine options. Key features include a touchscreen infotainment system, sunroof, and advanced safety. Creta is considered one of the best-selling family SUVs in India.
+            </p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="tv5" name="tv" value="5"><label for="tv5">★</label>
+                <input type="radio" id="tv4" name="tv" value="4"><label for="tv4">★</label>
+                <input type="radio" id="tv3" name="tv" value="3"><label for="tv3">★</label>
+                <input type="radio" id="tv2" name="tv" value="2"><label for="tv2">★</label>
+                <input type="radio" id="tv1" name="tv" value="1"><label for="tv1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section>
+      <h2>Maruti Suzuki Jimny</h2>
+      <div class="grid static-cards">
+        <div class="card">
+          <div class="card-image">
+            <img src="jimny.jpg" alt="SUV">
+          </div>
+          <div class="card-content">
+            <h3>Maruti Suzuki Jimny: Compact Power, Endless Adventure</h3>
+            <p>
+              The Jimny (Sports Utility Vehicle) is a compact yet powerful car designed for city roads and rough terrains. It has higher ground clearance and all-wheel drive for better performance. Jimny offers spacious interiors and is suitable for families and long trips.
+            </p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="sw5" name="sw" value="5"><label for="sw5">★</label>
+                <input type="radio" id="sw4" name="sw" value="4"><label for="sw4">★</label>
+                <input type="radio" id="sw3" name="sw" value="3"><label for="sw3">★</label>
+                <input type="radio" id="sw2" name="sw" value="2"><label for="sw2">★</label>
+                <input type="radio" id="sw1" name="sw" value="1"><label for="sw1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section>
+      <h2>Mahindra Thar</h2>
+      <div class="grid static-cards">
+        <div class="card">
+          <div class="card-image">
+            <img src="thar.jpg" alt="thar">
+          </div>
+          <div class="card-content">
+            <h3>Mahindra Thar: The Icon of Adventure</h3>
+            <p>
+              The Mahindra Thar is a rugged SUV built for off-road adventures. It comes with powerful petrol and diesel engine options and 4x4 capabilities. Key features include a removable top, infotainment, and safety systems. Loved for its durability and adventure spirit.
+            </p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="hp5" name="hp" value="5"><label for="hp5">★</label>
+                <input type="radio" id="hp4" name="hp" value="4"><label for="hp4">★</label>
+                <input type="radio" id="hp3" name="hp" value="3"><label for="hp3">★</label>
+                <input type="radio" id="hp2" name="hp" value="2"><label for="hp2">★</label>
+                <input type="radio" id="hp1" name="hp" value="1"><label for="hp1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <div class="container">
+    <section>
+      <h2>User Blogs</h2>
+      <div class="grid" id="blogs-container"></div>
+    </section>
+  </div>
+
+  <!-- Blogs Section -->
+  <div class="blog-system">
+    <h2>Write a Review</h2>
+    <input type="text" id="title" placeholder="Blog Title">
+    <textarea id="content" rows="5" placeholder="Write your blog..."></textarea>
+    <input type="file" id="image" accept="image/*">
+    <button onclick="addBlog()">Publish</button>
+  </div>
+
+
+
+  <script>
+    function addBlog() {
+      let title = document.getElementById("title").value;
+      let content = document.getElementById("content").value;
+      let imageInput = document.getElementById("image").files[0];
+
+      if (!title || !content) {
+        alert("Please write something!");
+        return;
+      }
+
+      if (imageInput) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+          saveBlog(title, content, e.target.result);
+        }
+        reader.readAsDataURL(imageInput);
+      } else {
+        saveBlog(title, content, null);
+      }
+    }
+
+    function saveBlog(title, content, image) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs.unshift({ title, content, image });
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("image").value = "";
+    }
+
+    function deleteBlog(index) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs.splice(index, 1);
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+    }
+
+    function displayBlogs() {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let container = document.getElementById("blogs-container");
+      container.innerHTML = "";
+      blogs.forEach((b, i) => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <div class="card-image">
+            ${b.image ? `<img src="${b.image}" alt="${b.title}">` : ""}
+          </div>
+          <div class="card-content">
+            <h3>${b.title}</h3>
+            <p>${b.content}</p>
+            <button class="btn" style="background:#c62828;margin-top:10px;" onclick="deleteBlog(${i})">Delete Blog</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = displayBlogs;
+  </script>
+</body>
+</html>

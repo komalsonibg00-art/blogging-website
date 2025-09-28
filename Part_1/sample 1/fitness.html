@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Reviews</title>
+  <link rel="stylesheet" href="fitness.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Fitness Reviews</h1>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>💪 Fitness</h2>
+
+      <div class="grid" id="cards-container">
+
+        <div class="card">
+          <div class="card-image">
+            <img src="./photo/trademill.jpeg" alt="Treadmill">
+          </div>
+          <div class="card-content">
+            <h3>Treadmill</h3>
+            <p>Tremill offers a perfect mix of style and smart features. It tracks your health with accurate sensors for
+              heart rate, sleep, and fitness. With built-in GPS and notifications, it keeps you connected on the go. The
+              battery lasts long, and the design fits both casual and professional looks. If you want a reliable and
+              stylish smartwatch, Tremill is a great choice this year.!</p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="tv5" name="tv" value="5"><label for="tv5">★</label>
+                <input type="radio" id="tv4" name="tv" value="4"><label for="tv4">★</label>
+                <input type="radio" id="tv3" name="tv" value="3"><label for="tv3">★</label>
+                <input type="radio" id="tv2" name="tv" value="2"><label for="tv2">★</label>
+                <input type="radio" id="tv1" name="tv" value="1"><label for="tv1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+            <img src="./photo/dumbells.jpg" alt="Dumbbells">
+          </div>
+          <div class="card-content">
+            <h3>Dumbbells</h3>
+            <p>Dumbbells are versatile and perfect for strength training at home. They help build muscle, improve
+              coordination, and increase endurance. Whether you're a beginner or advanced, dumbbells offer countless
+              exercises targeting different muscle groups. They are compact, easy to store, and great for full-body
+              workouts. Adding dumbbells to your routine boosts fitness and helps achieve your goals efficiently.</p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="sw5" name="sw" value="5"><label for="sw5">★</label>
+                <input type="radio" id="sw4" name="sw" value="4"><label for="sw4">★</label>
+                <input type="radio" id="sw3" name="sw" value="3"><label for="sw3">★</label>
+                <input type="radio" id="sw2" name="sw" value="2"><label for="sw2">★</label>
+                <input type="radio" id="sw1" name="sw" value="1"><label for="sw1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+            <img src="./photo/Exercise bike.jpeg" alt="Exercise Bike">
+          </div>
+          <div class="card-content">
+            <h3>Exercise Bike</h3>
+            <p>Exercise bikes are a fantastic way to stay fit without leaving your home. They provide a low-impact
+              cardio workout that’s easy on your joints while burning calories effectively. Perfect for all fitness
+              levels, exercise bikes help improve endurance and strengthen your legs. Plus, you can multitask by
+              watching TV or listening to music while pedaling. It’s a convenient and efficient way to boost your health
+              every day.</p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="hp5" name="hp" value="5"><label for="hp5">★</label>
+                <input type="radio" id="hp4" name="hp" value="4"><label for="hp4">★</label>
+                <input type="radio" id="hp3" name="hp" value="3"><label for="hp3">★</label>
+                <input type="radio" id="hp2" name="hp" value="2"><label for="hp2">★</label>
+                <input type="radio" id="hp1" name="hp" value="1"><label for="hp1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <div class="blog-system">
+    <h2>Write a Blog</h2>
+    <input type="text" id="title" placeholder="Blog Title">
+    <textarea id="content" rows="5" placeholder="Write your blog..."></textarea>
+    <input type="file" id="image" accept="image/*">
+    <button onclick="addBlog()">Publish</button>
+  </div>
+
+  <script>
+    function addBlog() {
+      let title = document.getElementById("title").value;
+      let content = document.getElementById("content").value;
+      let imageInput = document.getElementById("image").files[0];
+
+      if (!title || !content) {
+        alert("Please write something!");
+        return;
+      }
+
+      if (imageInput) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+          saveBlog(title, content, e.target.result);
+        }
+        reader.readAsDataURL(imageInput);
+      } else {
+        saveBlog(title, content, null);
+      }
+    }
+
+    function saveBlog(title, content, image) {
+      let blogs = JSON.parse(localStorage.getItem("fitnessBlogs")) || [];
+      blogs.unshift({ title, content, image });
+      localStorage.setItem("fitnessBlogs", JSON.stringify(blogs));
+      displayBlogs();
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("image").value = "";
+    }
+
+    function deleteBlog(index) {
+      let blogs = JSON.parse(localStorage.getItem("fitnessBlogs")) || [];
+      blogs.splice(index, 1);
+      localStorage.setItem("fitnessBlogs", JSON.stringify(blogs));
+      displayBlogs();
+    }
+
+    function displayBlogs() {
+      let blogs = JSON.parse(localStorage.getItem("fitnessBlogs")) || [];
+      let container = document.getElementById("cards-container");
+
+      const staticCards = document.querySelector("section .grid").dataset.static || document.querySelector("section .grid").innerHTML;
+      container.innerHTML = staticCards;
+
+      blogs.forEach((b, i) => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <div class="card-image">
+            ${b.image ? `<img src="${b.image}" alt="${b.title}">` : ""}
+          </div>
+          <div class="card-content">
+            <h3>${b.title}</h3>
+            <p>${b.content}</p>
+            <div class="review-section">
+              <div class="stars">
+                <input type="radio" id="b${i}5" name="b${i}" value="5"><label for="b${i}5">★</label>
+                <input type="radio" id="b${i}4" name="b${i}" value="4"><label for="b${i}4">★</label>
+                <input type="radio" id="b${i}3" name="b${i}" value="3"><label for="b${i}3">★</label>
+                <input type="radio" id="b${i}2" name="b${i}" value="2"><label for="b${i}2">★</label>
+                <input type="radio" id="b${i}1" name="b${i}" value="1"><label for="b${i}1">★</label>
+              </div>
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn">Submit Review</button>
+              <button class="btn" style="background:#c62828;margin-top:10px;" onclick="deleteBlog(${i})">Delete Blog</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = () => {
+      const grid = document.querySelector("section .grid");
+      grid.dataset.static = grid.innerHTML;
+      displayBlogs();
+    };
+  </script>
+
+</body>
+
+</html>

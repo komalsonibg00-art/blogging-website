@@ -1,0 +1,262 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #d9e8fc;
+    color: #000;
+}
+
+header {
+    background: #0f2f66;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header h1 {
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 30px auto;
+    padding-top: 70px;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.card,
+.blog-card {
+    display: flex;
+    background: transparent;
+    margin: 25px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    gap: 40px;
+    align-items: center;
+}
+
+.card-image,
+.blog-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image img,
+.blog-image img {
+    width: auto;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+.card-content,
+.blog-content {
+    flex: 1;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #000;
+}
+
+.card-content h3,
+.blog-content h3 {
+    margin-top: 0;
+    font-size: 26px;
+    color: #000;
+}
+
+.card-content p,
+.blog-content p {
+    margin: 15px 0 25px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000;
+}
+
+.review-section,
+.blog-review-section {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.stars {
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label {
+    font-size: 22px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.stars input:checked~label,
+.stars label:hover,
+.stars label:hover~label {
+    color: gold;
+}
+
+textarea {
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: none;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+}
+
+.btn {
+    background: #0f2f66;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    align-self: flex-end;
+}
+
+.btn:hover {
+    background: #153f87;
+}
+
+.delete-btn {
+    background: #e63946;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+}
+
+.blog-system {
+    margin: 40px 20px;
+}
+
+.blog-system h2 {
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.blog-system input[type="text"],
+.blog-system textarea,
+.blog-system input[type="file"] {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #000;
+}
+
+.blog-system button {
+    padding: 8px 15px;
+    margin-top: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #0f2f66;
+    color: #fff;
+    font-size: 14px;
+}
+
+.blog-system button:hover {
+    background: #153f87;
+}
+
+@media screen and (max-width: 992px) {
+    .card,
+    .blog-card {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .card-image img,
+    .blog-image img {
+        height: 200px;
+    }
+    .card-content,
+    .blog-content {
+        padding: 15px 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 22px;
+    }
+    .card-image img,
+    .blog-image img {
+        height: 180px;
+    }
+    .card-content h3,
+    .blog-content h3 {
+        font-size: 22px;
+    }
+    .card-content p,
+    .blog-content p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card,
+    .blog-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .card-image img,
+    .blog-image img {
+        height: 150px;
+    }
+    .card-content h3,
+    .blog-content h3 {
+        font-size: 20px;
+    }
+    .card-content p,
+    .blog-content p {
+        font-size: 14px;
+    }
+    .btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

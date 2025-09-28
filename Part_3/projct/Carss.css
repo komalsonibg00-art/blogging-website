@@ -1,0 +1,169 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        /* radial-gradient(circle at 20% 20%, #E6DAF5, transparent 20%), */
+        radial-gradient(circle at 80% 30%, #82d3ff, transparent 90%),
+        /* radial-gradient(circle at 40% 80%, #FBC4D6, transparent 20%), */
+        /* radial-gradient(circle at 70% 70%, #CFFFE5, transparent 50%), */
+        radial-gradient(circle at 50% 50%, #FFDAB9, transparent 50%);
+
+    background-color: #FFFACD;
+    color: #6fa1be;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Car container */
+.car-container {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Car row */
+.car-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Car blog card */
+.car-blog {
+    /* background: #fff; */
+    background:
+        /* radial-gradient(circle at 20% 20%, #E6DAF5, transparent 40%), */
+        radial-gradient(circle at 80% 30%, #69cbff, transparent 70%),
+        /* radial-gradient(circle at 40% 80%, #FBC4D6, transparent 40%), */
+        radial-gradient(circle at 70% 70%, #89ffc0, transparent 30%),
+        radial-gradient(circle at 50% 50%, #FFDAB9, transparent 50%);
+    background-color: #FFFACD;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.car-blog:hover {
+    transform: translateY(-5px);
+}
+
+.car-blog img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.car-blog h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.car-blog p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Read more row */
+.read-more-row {
+    text-align: center;
+}
+
+.read-more-row button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #80f0ff;
+    color: #040404;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.read-more-row button:hover {
+    background: #16a8f2;
+}
+
+
+nav {
+    background: linear-gradient(90deg, #d9b9ff, #86d5ff);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+    width: 100%;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-brand h1 {
+    font-size: 30px;
+    margin: 0;
+    color: #fff;
+}
+
+.nav-brand p {
+    font-size: 14px;
+    margin: 0;
+    color: #f9f9f9;
+}
+
+
+.nav-categories {
+    display: flex;
+    gap: 10px;
+    margin-right: 40%;
+}
+
+.nav-categories button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #eee;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-categories button:hover {
+    background: #d4b3ff;
+    color: #fff;
+}
+
+.nav-categories button.active {
+    background: #c978ff;
+    color: #fff;
+}

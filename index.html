@@ -1,80 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogging Website</title>
+  <!-- <link rel="stylesheet" href="index.css"> -->
+   <link rel="stylesheet" href="dex.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./imgs/Feviconi.png">
+
 </head>
+
 <body>
-    <nav>
-        <a href="">LOGO here</a>
-        <h2>Blogger</h2>
-       
-        <h4>CREATE YOUR BLOG</h4>
-    </nav>
 
-    <!-- git init:   -->
-    <div id="div1">
+  <div class="navbar">
+    <div class="logo">
+    </div>
+    <div class="menu">
+      <a href="#features"> Features </a>
+      <a href="#categories"> Categories </a>
+      <a href="#about"> About </a>
+      <a href="#marketing"> Marketing </a>
+      <a href="#FAQ"> FAQ </a>
+      <a href="#contact"> Contact </a>
 
-        <a id="Sign" href="" >SIGN IN </a>
+    </div>
+    <div class="cta">
+      <a href="#categories">Create Your Blog</a>
+    </div>
+  </div>
+
+
+
+  <!-- Features -->
+  <section id="features1" style="height: 990px;">
+    <div class="content">
+      <div id="div1">
         <h1>Publish your passions, your way</h1>
         <h4>Create a unique and beautiful blog easily.</h4>
-        <a href=""> <p id="DivP">CREATE YOUR BLOG</p> </a>   
-          
+        <a href="#categories">
+          <p id="DivP">CREATE YOUR BLOG</p>
+        </a>
+
         <br><br>
         <div class="slider">
-            <div class="slide"> <img src="./imgs/img1.jpeg" alt="not found"></div>
-            <div class="slide">  <img src="./imgs/img2.jpeg" alt="not found"></div>
-            <div class="slide">  <img src="./imgs/img3.jpeg" alt="not found"></div>
+          <div class="slide"><img src="./imgs/carsss.png" alt="not found" id="imgFF"></div>
+          <div class="slide"><img src="./imgs/clothing.png" alt="not found" id="imgFF"></div>
+          <div class="slide"><img src="./imgs/appli.png" alt="not found" id="imgFF"></div>
         </div>
- 
-     </div>
+      </div>
 
-     <div id="Div2">
-        <div>
-            <h1 style="padding-top: 80px; margin-top: 0%;">Choose the perfect design</h1>
-            <p style="font-size: 25px; margin-top: 30px; ">Create a beautiful blog that fits your style. Choose from a selection of easy-to-use templates - all with flexible layouts and hundreds of background images - or design something new.</p>
+      <section id="Div2" class="home-section">
+        <div class="home-content">
+          <h2>Hello, it's a Blogging</h2>
+          <h1 id="h22">Website, and here</h1>
+          <h3>you can...<span class="text"></span></h3>
         </div>
-     </div>
+      </section>
+    </div>
+  </section>
 
-<!-- content -->
+  <section id="categoriess" class="services" style="height: 600px;">
+    <div class="container">
+      <h1 class="sub-title"><span>Write Your Own Blog</span></h1>
 
-<section class="services" id="services">
-        <div class="container">
-            <h1 class="sub-title"><span>Write Your Own Blog</span></h1>
-            <div class="services-list">
 
-                <div id="B-type1">
-                    <i class="bx bx-code" style="color: #7bbde8"></i>
-                    <h2>UI/UX Design</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur dipisicing elit. Illum nulla ea laboriosam delectus quis?
-                        Lorem ipsum dolor sit amet. Tenetur pariatur.</p>
-                        <a href="#" class="Click">Click here</a>
-                </div>
+      <div class="services-list">
 
-                <div  id="B-type2" >
-                    <i class="bx bx-crop" style="color: #7bbde8"></i>
-                    <h2>Graphic Design</h2>
-                    <p>Lorem ipsum dolor sit Lorem ipsum dolor sit amet. amet consectetur adipisicing elit. Illum nulla
-                        ea laboriosam delectus quis? Tenetur pariatur.</p>
-                       <a href="#" class="Click">Click here</a>
-                </div>
-
-                <div id="B-type3" >
-                    <i class="#" style=" color: #7bbde8"><i>
-                    <h2>Development</h2>
-                    <p>Lorem ipsum dolor Lorem ipsum dolor sit amet. sit amet consectetur adipisicing elit.
-                                Illum nulla ea laboriosam delectus quis? Tenetur pariatur.</p>
-                    <a href="#" class="Click">Click here</a>
-                </div>
-
-             </div>
-            </div>
+        <div id="B-type1" class="BlogT">
+          <h2>Smart Appliances</h2>
+          <a href="./Part_1/sample 1/1.html" class="Click"> Explore Appliances</a>
         </div>
-    </section>
+
+        <div id="B-type2" class="BlogT2">
+          <h2>Trendy Fashion</h2>
+          <a href="./part_2/project/shiv.html" class="Click">Shop Fashion</a>
+        </div>
+
+        <div id="B-type3" class="BlogT3">
+          <h2>Dream Cars</h2>
+          <a href="./Part_3/projct/cars.html" class="Click">View Cars</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- About / Features -->
+<section id="about" class="Features">
+
+  <div id="Fetur2">
+    <div id="FDiv1">
+      <h4>Create, publish, and manage content</h4>
+      <p>Publish and manage blog posts with a built-in CMS and dashboard. Schedule posts, view analytics, and manage contributors.</p>
+    </div>
+    <div id="FDiv2">
+      <h4>Draft on-brand copy with AI</h4>
+      <p>Publish more often with AI writer. Generate blog ideas, outlines, or drafts, then polish it and go live.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Marketing -->
+<section id="marketing" class="Marketing">
+
+  <div id="Mark2">
+    <div id="MDiv1">
+      <h4>Metrics to guide your blog strategy</h4>
+      <p>Track traffic and engagement metrics with Analytics to see which posts resonate the most with your audience.</p>
+    </div>
+    <div id="MDiv2">
+      <h4>Marketing and SEO to promote your blog</h4>
+      <p>Drive traffic to your blog with built-in SEO and social media syncing or email newsletters.</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="FAQ">
+    <h1>FAQ Section</h1>
+
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          How to build your blog
+          <span>+</span>
+        </div>
+        <div class="accordion-content">
+          <p>01 Pick a template - Choose a blog template or design your own.</p>
+          <p>02 Get a domain name - Register a custom domain for your blog.</p>
+          <p>03 Create your blog - Customize your layout and add pages.</p>
+          <p>04 Start publishing - Write and manage your posts easily.</p>
+          <p>05 Publish your website - Launch and share your blog with the world.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          Frequently asked questions
+          <span>+</span>
+        </div>
+        <div class="accordion-content">
+          <p>Here you can add the most common questions and answers for your users.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          24/7 Support
+          <span>+</span>
+        </div>
+        <div class="accordion-content">
+          <p>We are available anytime to help you with your queries and support issues.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trial -->
+  <div id="Trial">
+    <h1>Start your free Blogging trial today</h1>
+    <p>No credit card required. Cancel anytime.</p>
+    <!-- <button>Get Started</button> -->
+  </div>
+
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./imgs/hero-poster.jpg">
+      <source src="https://media-www.sqspcdn.com/images/pages/flagship/blogs/hero/blog-fitness-mobile.mp4"
+        type="video/mp4">
+    </video>
+  </section>
+
+  <!-- Contact -->
+  <footer>
     
+    <div id="Contact-1">
+      <h1>Contact Us</h1>
+      <p class="intro">We'd love to hear from you! Fill out the form below or reach us directly.</p>
+      <div id="cont">
+        <div class="contact-details">
+          <p id="p1"><strong>Email:</strong> blogging@gmail.com</p>
+          <p><strong>Phone:</strong> +91 1234123456</p>
+          <p><strong>Address:</strong>Somewhere, Jaipur, Rajasthan</p>
+
+          <style>
+.social-icons {
+  margin-top: 20px;
+  text-align: center;  
+}
+
+.social-icons p {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;  /* text aur icons ke beech space */
+}
+
+.social-icons .icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;   /* icons ke beech space */
+}
+
+.social-icons a {
+  display: inline-block;        
+  color: #333;                
+  font-size: 35px;   /* icons thode bade */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000; 
+  transform: scale(1.2); 
+}
+</style>
+
+            <div class="social-icons">
+              <p>Follow-US</p>
+              <div class="icons">
+                <a href="https://www.facebook.com/profile.php?id=61551682169321"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.instagram.com/_its_komal._09"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.linkedin.com/in/komal-soni-16182327b/"><i class='bx bxl-linkedin'></i></a>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="Contact-2">
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </footer>
 
 
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var typed = new Typed(".text", {
+      strings: ["Write Your Blog", "Take reviews", "Give reviews on blogs",],
+      typeSpeed: 100,
+      backSpeed: 100,
+      backDelay: 1000,
+      loop: true
+    });
+  </script>
+  <script src="Index.js"></script>
 </body>
+
 </html>
+
+
+

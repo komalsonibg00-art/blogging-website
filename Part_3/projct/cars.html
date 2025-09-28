@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Blogs</title>
+  <link rel="stylesheet" href="Carss.css">
+
+</head>
+
+<body>
+
+   <nav id="main-nav">
+    <div class="nav-brand">
+      <h1>Auto Reviews</h1>
+      <p>Discover The Most Lovable Cars</p>
+    </div>
+    <div class="nav-categories">
+      <button class="active" onclick="scrollToSection('suv', this)">SUV</button>
+      <button onclick="scrollToSection('hatchback', this)">Hatchback</button>
+      <button onclick="scrollToSection('luxury', this)">Luxury</button>
+    </div>
+  </nav>
+
+  <main class="car-container">
+
+    <!-- Row 1 -->
+    <div class="car-row" id="suv">
+      <div class="car-blog">
+        <img src="fortuner.jpg" alt="Sports Car">
+        <h2>Toyota Fortuner</h2>
+        <p>Toughness Meets Luxury & Performance</p>
+      </div>
+      <div class="car-blog">
+        <img src="scarpio n.jpg" alt="SUV">
+        <h2>Scorpio-N</h2>
+        <p>Redefining the SUV Experience</p>
+      </div>
+      <div class="car-blog">
+        <img src="shift.jpg" alt="Car">
+        <h2>Swift</h2>
+        <p>Style Meets Performance</p>
+      </div>
+    </div>
+    <div class="read-more-row">
+      <a href="./readmore1.html"><button>Read More about Fortuner, Scorpio-N & Swift</button></a>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="car-row" id="hatchback">
+      <div class="car-blog">
+        <img src="xuv700.jpg" alt="Luxury Car">
+        <h2>Mahindra XUV700</h2>
+        <p>Power and Luxury Combined</p>
+      </div>
+      <div class="car-blog">
+        <img src="be6.jpg" alt="SUV">
+        <h2>Mahindra Be6</h2>
+        <p>Bold Design & Next-Gen Tech</p>
+      </div>
+      <div class="car-blog">
+        <img src="thar.jpg" alt="SUV">
+        <h2>Mahindra Thar</h2>
+        <p>The True Icon of Adventure</p>
+      </div>
+    </div>
+    <div class="read-more-row">
+      <a href="./readmore2.html"><button>Read More about XUV700, Be6 & Thar</button></a>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="car-row" id="luxury">
+      <div class="car-blog">
+        <img src="jimny.jpg" alt="SUV">
+        <h2>Maruti Suzuki Jimny</h2>
+        <p>Compact Power, Endless Adventure</p>
+      </div>
+      <div class="car-blog">
+        <img src="creta.jpg" alt="SUV">
+        <h2>Hyundai Creta</h2>
+        <p>Style, Comfort & Performance</p>
+      </div>
+      <div class="car-blog">
+        <img src="fortuner.jpg" alt="SUV">
+        <h2>Toyota Fortuner</h2>
+        <p>Power, Style, Luxury & Dominance</p>
+      </div>
+    </div>
+    <div class="read-more-row">
+      <a href="./readmore3.html"><button>Read More about Jimny, Creta & Fortuner</button></a>
+    </div>
+
+  </main>
+
+  <script>
+     function scrollToSection(id, btn) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      
+      // Active button toggle
+      document.querySelectorAll('.nav-categories button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
