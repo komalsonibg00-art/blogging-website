@@ -6,62 +6,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blogging Website</title>
   <!-- <link rel="stylesheet" href="index.css"> -->
-   <link rel="stylesheet" href="dex.css">
+  <link rel="stylesheet" href="dex.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="./imgs/Feviconi.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 
 </head>
 
 <body>
 
-  <div class="navbar">
-    <div class="logo">
-    </div>
-    <div class="menu">
-      <a href="#features"> Features </a>
-      <a href="#categories"> Categories </a>
-      <a href="#about"> About </a>
-      <a href="#marketing"> Marketing </a>
-      <a href="#FAQ"> FAQ </a>
-      <a href="#contact"> Contact </a>
 
+  <div class="navbar">
+    <!-- <div class="logo">MySite</div> -->
+
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
     </div>
-    <div class="cta">
-      <a href="#categories">Create Your Blog</a>
+    <div class="menu" id="menu">
+      <a href="#features1">Features</a>
+      <a href="#categoriess">Categories</a>
+      <a href="#about">About</a>
+      <a href="#FAQ">FAQ</a>
+      <a href="#contact" id="NavCon">Contact</a>
+      <!-- <a href="#login">Log-in</a> -->
     </div>
   </div>
 
 
 
+
   <!-- Features -->
-  <section id="features1" style="height: 990px;">
+  <section id="features1" style="height: 535px;">
     <div class="content">
       <div id="div1">
         <h1>Publish your passions, your way</h1>
         <h4>Create a unique and beautiful blog easily.</h4>
-        <a href="#categories">
+        <a href="#categoriess">
           <p id="DivP">CREATE YOUR BLOG</p>
         </a>
 
-        <br><br>
-        <div class="slider">
-          <div class="slide"><img src="./imgs/carsss.png" alt="not found" id="imgFF"></div>
-          <div class="slide"><img src="./imgs/clothing.png" alt="not found" id="imgFF"></div>
-          <div class="slide"><img src="./imgs/appli.png" alt="not found" id="imgFF"></div>
-        </div>
       </div>
-
-      <section id="Div2" class="home-section">
-        <div class="home-content">
-          <h2>Hello, it's a Blogging</h2>
-          <h1 id="h22">Website, and here</h1>
-          <h3>you can...<span class="text"></span></h3>
-        </div>
-      </section>
     </div>
+
+
+
+    <br><br>
+
+    <div class="slider">
+      <div class="slide-track">
+        <!-- 4 images (repeat twice for smooth loop) -->
+        <div class="slide"><img src="./imgs/row1.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row2.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row05.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row6.jpeg" alt=""></div>
+
+        <!-- Repeat same images for infinite effect -->
+        <div class="slide"><img src="./imgs/row7.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row3.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row4.jpeg" alt=""></div>
+        <div class="slide"><img src="./imgs/row8.jpeg" alt=""></div>
+      </div>
+    </div>
+
   </section>
 
-  <section id="categoriess" class="services" style="height: 600px;">
+
+  <section id="Div2" class="home-section">
+
+    <div class="home-content">
+      <h2>Hello, it's a Blogging</h2>
+      <h1 id="h22">Website, and here</h1>
+      <h3>you can...<span class="text"></span></h3>
+    </div>
+
+
+    <img src="./imgs/girl.png" class="girl">
+
+  </section>
+
+
+
+  <section id="categoriess" class="services">
     <div class="container">
       <h1 class="sub-title"><span>Write Your Own Blog</span></h1>
 
@@ -75,7 +101,7 @@
 
         <div id="B-type2" class="BlogT2">
           <h2>Trendy Fashion</h2>
-          <a href="./part_2/project/shiv.html" class="Click">Shop Fashion</a>
+          <a href="./part_2/project/clothm.html" class="Click">Shop Fashion</a>
         </div>
 
         <div id="B-type3" class="BlogT3">
@@ -87,35 +113,28 @@
     </div>
   </section>
 
-<!-- About / Features -->
-<section id="about" class="Features">
+  <!-- About / Features -->
+  <section id="about" class="Features">
 
-  <div id="Fetur2">
-    <div id="FDiv1">
-      <h4>Create, publish, and manage content</h4>
-      <p>Publish and manage blog posts with a built-in CMS and dashboard. Schedule posts, view analytics, and manage contributors.</p>
-    </div>
-    <div id="FDiv2">
-      <h4>Draft on-brand copy with AI</h4>
-      <p>Publish more often with AI writer. Generate blog ideas, outlines, or drafts, then polish it and go live.</p>
-    </div>
-  </div>
-</section>
+    <div id="Fetur2">
+      <div id="FDiv1">
 
-<!-- Marketing -->
-<section id="marketing" class="Marketing">
+      </div>
+      <div id="FDiv2">
+      </div>
+    </div>
+  </section>
 
-  <div id="Mark2">
-    <div id="MDiv1">
-      <h4>Metrics to guide your blog strategy</h4>
-      <p>Track traffic and engagement metrics with Analytics to see which posts resonate the most with your audience.</p>
+  <!-- Marketing -->
+  <section id="marketing" class="Marketing">
+
+    <div id="Mark2">
+      <div id="MDiv1">
+
+      </div>
+
     </div>
-    <div id="MDiv2">
-      <h4>Marketing and SEO to promote your blog</h4>
-      <p>Drive traffic to your blog with built-in SEO and social media syncing or email newsletters.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
 
   <section id="FAQ">
@@ -176,7 +195,7 @@
 
   <!-- Contact -->
   <footer>
-    
+
     <div id="Contact-1">
       <h1>Contact Us</h1>
       <p class="intro">We'd love to hear from you! Fill out the form below or reach us directly.</p>
@@ -186,47 +205,18 @@
           <p><strong>Phone:</strong> +91 1234123456</p>
           <p><strong>Address:</strong>Somewhere, Jaipur, Rajasthan</p>
 
-          <style>
-.social-icons {
-  margin-top: 20px;
-  text-align: center;  
-}
 
-.social-icons p {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;  /* text aur icons ke beech space */
-}
 
-.social-icons .icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;   /* icons ke beech space */
-}
-
-.social-icons a {
-  display: inline-block;        
-  color: #333;                
-  font-size: 35px;   /* icons thode bade */
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #000; 
-  transform: scale(1.2); 
-}
-</style>
-
-            <div class="social-icons">
-              <p>Follow-US</p>
-              <div class="icons">
-                <a href="https://www.facebook.com/profile.php?id=61551682169321"><i class='bx bxl-facebook-circle'></i></a>
-                <a href="#"><i class='bx bxl-twitter'></i></a>
-                <a href="https://www.instagram.com/_its_komal._09"><i class='bx bxl-instagram'></i></a>
-                <a href="https://www.linkedin.com/in/komal-soni-16182327b/"><i class='bx bxl-linkedin'></i></a>
-              </div>
+          <div class="social-icons">
+            <p>Follow-US</p>
+            <div class="icons">
+              <a href="https://www.facebook.com/profile.php?id=61551682169321"><i
+                  class='bx bxl-facebook-circle'></i></a>
+              <a href="#"><i class='bx bxl-twitter'></i></a>
+              <a href="https://www.instagram.com/_its_komal._09"><i class='bx bxl-instagram'></i></a>
+              <a href="https://www.linkedin.com/in/komal-soni-16182327b/"><i class='bx bxl-linkedin'></i></a>
             </div>
+          </div>
 
         </div>
       </div>
@@ -253,6 +243,9 @@
       backDelay: 1000,
       loop: true
     });
+
+
+
   </script>
   <script src="Index.js"></script>
 </body>

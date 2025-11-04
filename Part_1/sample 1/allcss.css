@@ -2,14 +2,15 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #d9e8fc;
+  background: #c9b1a4;
   color: #000;
 }
 
 header {
-  background: #0f2f66;
+  /* background: #0f2f66; */
+  background: linear-gradient(120deg, #c1967e, #a58559, #945c4e, #b46a52);
   color: #fff;
-  padding: 8px;
+  /* padding: 8px; */
   text-align: center;
   position: fixed;
   top: 0;
@@ -20,6 +21,9 @@ header {
 
 header h1 {
   color: #fff;
+  margin: 0%;
+  padding: 0%;
+
 }
 
 .container {
@@ -32,12 +36,15 @@ header h1 {
 h2 {
   margin-bottom: 25px;
   color: #000;
+  padding: 30px 40px;
 }
 
 .grid {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  /* gap: 50px; */
+  margin: 0%;
+  padding: 0%;
 }
 
 .card, .blog-card {
@@ -67,7 +74,7 @@ h2 {
 
 .card-content, .blog-content {
   flex: 1;
-  padding: 20px 25px;
+  padding: 20px 2px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -76,16 +83,26 @@ h2 {
 
 .card-content h3, .blog-content h3 {
   margin-top: 0;
-  font-size: 26px;
+  font-size: 18px;
+  padding-right:0 ;
+  padding-left: 2%;
+  padding-bottom:0%;
+  padding-top: 5px ;
+  margin-bottom: 0%;
   color: #000;
+   background-color: #b46a52;
+   height: 30px;
+   width: 160px;
+   border-radius: 5%;
+   /* border-radius: 30%; */
 }
 
 .card-content p, .blog-content p {
   margin: 15px 0 25px;
-  font-size: 16px;
+  font-size: 11px;
   line-height: 1.6;
   color: #000;
-  word-wrap: break-word;
+   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
@@ -98,30 +115,13 @@ h2 {
   gap: 8px;
 }
 
-.stars {
-  margin-bottom: 10px;
-  align-self: flex-start;
-}
-
-.stars input {
-  display: none;
-}
-
-.stars label {
-  font-size: 22px;
-  color: #ccc;
-  cursor: pointer;
-}
-
-.stars input:checked ~ label,
-.stars label:hover,
-.stars label:hover ~ label {
-  color: gold;
+.reviews-list p{
+  font-size: 17px;
 }
 
 textarea {
-  width: 100%;
-  height: 60px;
+  width: 80%;
+  height: 40px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -133,10 +133,11 @@ textarea {
 }
 
 .btn {
-  background: #0f2f66;
+  /* background: #0f2f66; */
+        background: linear-gradient(120deg, #c1967e, #a58559, #945c4e, #b46a52);
   color: #fff;
   border: none;
-  padding: 10px 18px;
+  padding: 5px 10px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 15px;
@@ -144,7 +145,7 @@ textarea {
 }
 
 .btn:hover {
-  background: #153f87;
+  background: #804d1d;
 }
 
 .delete-btn {
@@ -156,48 +157,76 @@ textarea {
   color: #fff;
   font-size: 14px;
   cursor: pointer;
+  
 }
 
 .delete-btn:hover {
-  background: #b71c1c;
+  background: #7a0707;
 }
 
 .blog-system {
-  margin: 40px 20px;
+  max-width: 400px;
+  margin: 20px auto;  
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .blog-system h2 {
-  margin-bottom: 15px;
-  color: #000;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 0%;
+  margin: 0%;
+  color: #734121;
+  margin-bottom: 30px;
 }
 
 .blog-system input[type="text"],
 .blog-system textarea,
 .blog-system input[type="file"] {
-  width: 100%;
-  margin: 5px 0;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  color: #000;
+  width: 80%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.blog-system input[type="text"]:focus,
+.blog-system textarea:focus {
+  border-color: #b55a22;
+  outline: none;
+  box-shadow: 0 0 8px rgba(243, 193, 67, 0.867);
+}
+
+.blog-system textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 .blog-system button {
-  padding: 8px 15px;
-  margin-top: 5px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background: #0f2f66;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
   color: #fff;
-  font-size: 14px;
+  /* background: #2563eb; */
+        background: linear-gradient(120deg, #c1967e, #a58559, #945c4e, #b46a52);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 
 .blog-system button:hover {
-  background: #153f87;
+  /* background: #1e40af; */
+        background: linear-gradient(120deg, #c1967e, #a58559, #945c4e, #b46a52);
+
 }
+
 
 @media screen and (max-width: 992px) {
   .card, .blog-card {
@@ -256,60 +285,44 @@ textarea {
   }
 }
 
-.blog-system {
-  max-width: 600px;
-  margin: 40px auto;  /* Center horizontally + space from top */
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
 
-.blog-system h2 {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #1e3a8a;
-}
+.home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #eea44a, #ffa755);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    position: fixed;  
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+     margin-left: 80%;
+  }
 
-.blog-system input[type="text"],
-.blog-system textarea,
-.blog-system input[type="file"] {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 15px;
-  transition: 0.3s;
-}
+  .home-btn:hover {
+    background: linear-gradient(135deg, #a16515, #a77d10);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
 
-.blog-system input[type="text"]:focus,
-.blog-system textarea:focus {
-  border-color: #2563eb;
-  outline: none;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
-}
 
-.blog-system textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.blog-system button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background: #2563eb;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.blog-system button:hover {
-  background: #1e40af;
-}
+  .review-item {
+      display: flex; 
+      align-items: center;
+      justify-content: space-between;
+      margin: 5px 0;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .delete-review-btn {
+      border: none;
+      background: transparent;
+      color: red;
+      font-size: 14px;
+      cursor: pointer;
+    }

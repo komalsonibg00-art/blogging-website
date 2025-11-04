@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Blogs</title>
+  <link rel="stylesheet" href="crpg1.css">
+
+
+<style>
+  .home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #664237, #dbb556);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    position: fixed;   /* always visible */
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    margin-left: 80%;
+  }
+
+  .home-btn:hover {
+    background: linear-gradient(135deg, #e07052, #f9b238);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+</style>
+
+ 
+</head>
+<body> 
+ 
+  <header>
+    <h1>Auto Reviews</h1> 
+    <p>Discover The Most Lovable cars And Give Your Reviews And Feedback</p> 
+     <!-- Paste this inside <body> of every page -->
+<a href="../../index.html" class="home-btn">🏠 Home</a>
+  </header>
+
+  <main class="car-container" id="cards-container">
+
+     <!-- Card 7 -->
+    <div class="card" data-type="car" data-name="Jimny">
+      <div class="card-image">
+        <img src="./img_of_car/jimny.jpg" alt="SUV">
+      </div>
+      <div class="card-content">
+        <h3>Maruti Suzuki Jimny: Compact Power, Endless Adventure</h3>
+        <p>Maruti Suzuki Jimny is a compact 4x4 SUV designed for pure adventure lovers. With its boxy styling, lightweight body and ladder-frame chassis, the Jimny offers excellent off-road performance even in challenging terrains. Powered by a reliable 1.5L petrol engine with 4WD capability, it combines ruggedness with practicality.</p>
+        <div class="reviews-list"><p>No reviews yet.</p></div>
+        <div class="review-section">
+          <textarea placeholder="Write your review..."></textarea>
+          <button class="btn" onclick="submitReview(this)">Submit Review</button>
+        </div>
+      </div>
+    </div>
+     
+     <!-- Card 8 -->
+    <div class="card" data-type="car" data-name="Creta">
+      <div class="card-image">
+        <img src="./img_of_car/creta.jpg" alt="SUV">
+      </div>
+      <div class="card-content">
+        <h3>Hundai Creta: Style Meets Performance on Every Drive</h3>
+        <p>Hyundai Creta is one of the most popular compact SUVs in India, known for its premium design and feature-rich cabin. With powerful engine options and a smooth driving experience, the Creta is perfect for both city commutes and highway trips. Its modern interiors, panoramic sunroof, ventilated seats and advanced touchscreen system give it a luxurious feel.</p>
+        <div class="reviews-list"><p>No reviews yet.</p></div>
+        <div class="review-section">
+          <textarea placeholder="Write your review..."></textarea>
+          <button class="btn" onclick="submitReview(this)">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Blog System -->
+  <div class="blog-system">
+    <h2>Write a Car Blog</h2>
+    <input type="text" id="title" placeholder="Car Blog Title">
+    <textarea id="content" rows="5" placeholder="Write your car blog..."></textarea>
+    <input type="file" id="image" accept="image/*">
+    <button onclick="addBlog()">Publish</button>
+  </div>
+
+  <script>
+    // =============== REVIEW SYSTEM ===============
+    function createReviewElement(text, type, parentKey, index = null) {
+      const div = document.createElement("div");
+      div.className = "review-item";
+
+      const span = document.createElement("span");
+      span.textContent = "📝 " + text;
+
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete-review-btn";
+      delBtn.textContent = "❌";
+
+      // Delete review from DOM + localStorage
+      delBtn.addEventListener("click", () => {
+        div.remove();
+        if (type === "car") {
+          let key = "car_" + parentKey;
+          let reviews = JSON.parse(localStorage.getItem(key)) || [];
+          reviews = reviews.filter(r => r !== text);
+          localStorage.setItem(key, JSON.stringify(reviews));
+          if (reviews.length === 0) {
+            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+          }
+        } else if (type === "blog") {
+          let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+          let blog = blogs.find(b => b.id == parentKey);
+          if (blog) {
+            blog.reviews = blog.reviews.filter(r => r !== text);
+            localStorage.setItem("blogs", JSON.stringify(blogs));
+          }
+          if (div.parentElement.children.length === 0) {
+            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+          }
+        }
+      });
+
+      div.appendChild(span);
+      div.appendChild(delBtn);
+      return div;
+    }
+
+    function submitReview(button) {
+      const card = button.closest(".card");
+      const textarea = card.querySelector("textarea");
+      const reviewList = card.querySelector(".reviews-list");
+      const reviewText = textarea.value.trim();
+
+      if (!reviewText) {
+        alert("Please write a review!");
+        return;
+      }
+
+      const type = card.dataset.type;
+      const name = card.dataset.name;
+
+      // Add to DOM
+      if (reviewList.querySelector("p") && reviewList.querySelector("p").innerText === "No reviews yet.") {
+        reviewList.innerHTML = "";
+      }
+      reviewList.appendChild(createReviewElement(reviewText, type, name));
+
+      textarea.value = "";
+
+      // Save to localStorage
+      if (type === "car") {
+        let key = "car_" + name;
+        let reviews = JSON.parse(localStorage.getItem(key)) || [];
+        reviews.push(reviewText);
+        localStorage.setItem(key, JSON.stringify(reviews));
+      } else if (type === "blog") {
+        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        let index = blogs.findIndex(b => b.id == name);
+        if (index > -1) {
+          blogs[index].reviews.push(reviewText);
+          localStorage.setItem("blogs", JSON.stringify(blogs));
+        }
+      }
+    }
+
+    function loadReviews() {
+      // Cars
+      document.querySelectorAll(".card[data-type='car']").forEach(card => {
+        let name = card.dataset.name;
+        let reviewList = card.querySelector(".reviews-list");
+        let key = "car_" + name;
+        let reviews = JSON.parse(localStorage.getItem(key)) || [];
+        reviewList.innerHTML = reviews.length > 0
+          ? ""
+          : "<p>No reviews yet.</p>";
+        reviews.forEach(r => {
+          reviewList.appendChild(createReviewElement(r, "car", name));
+        });
+      });
+
+      // Blogs
+      displayBlogs();
+    }
+
+    // =============== BLOG SYSTEM ===============
+    function addBlog() {
+      let title = document.getElementById("title").value.trim();
+      let content = document.getElementById("content").value.trim();
+      let imageInput = document.getElementById("image").files[0];
+
+      if (!title || !content) {
+        alert("Please fill title and content!");
+        return;
+      }
+
+      let id = Date.now();
+
+      if (imageInput) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+          saveBlog(id, title, content, e.target.result);
+        }
+        reader.readAsDataURL(imageInput);
+      } else {
+        saveBlog(id, title, content, null);
+      }
+    }
+
+    function saveBlog(id, title, content, image) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs.unshift({ id, title, content, image, reviews: [] });
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+
+      // Clear form
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("image").value = "";
+    }
+
+    function deleteBlog(id) {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs = blogs.filter(b => b.id != id);
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+      displayBlogs();
+    }
+
+    function displayBlogs() {
+      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let container = document.getElementById("cards-container");
+
+      // Remove old blogs
+      container.querySelectorAll(".card[data-type='blog']").forEach(el => el.remove());
+
+      blogs.forEach(blog => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.dataset.type = "blog";
+        div.dataset.name = blog.id;
+
+        div.innerHTML = `
+          <div class="card-image">
+            ${blog.image ? `<img src="${blog.image}" alt="${blog.title}">` : ""}
+          </div>
+          <div class="card-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.content}</p>
+            <div class="reviews-list">
+              ${blog.reviews.length === 0 ? "<p>No reviews yet.</p>" : ""}
+            </div>
+            <div class="review-section">
+              <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+              <button class="btn" style="background:#c62828;margin-top:10px;" onclick="deleteBlog(${blog.id})">Delete Blog</button>
+            </div>
+          </div>
+        `;
+
+        // Add saved reviews
+        let reviewList = div.querySelector(".reviews-list");
+        blog.reviews.forEach(r => {
+          reviewList.appendChild(createReviewElement(r, "blog", blog.id));
+        });
+
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = loadReviews;
+  </script>
+</body>
+</html>

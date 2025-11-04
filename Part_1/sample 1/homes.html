@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electronics & Gadgets Reviews</title>
-  <link rel="stylesheet" href="electronics.css">
-  <style>
-    .review-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 5px 0;
-      padding: 5px;
-      border-bottom: 1px solid #ddd;
-    }
-    .delete-review-btn {
-      border: none;
-      background: transparent;
-      color: red;
-      font-size: 14px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Home & Kitchen Reviews</title>
+  <link rel="stylesheet" href="allcss.css">
+
 </head>
+
 <body>
+
   <header>
-    <h1>Electronics & Gadgets Reviews</h1>
+    <h1>Home & Kitchen Review </h1>
+    <p>Home & Kitchen Appliances With Real Insights & Experiences</p>
+    <a href=".././../index.html" class="home-btn">🏠 Home</a>
+
   </header>
 
   <div class="container">
     <section>
-      <h2>📱 Electronics & Gadgets</h2>
+
       <div class="grid" id="cards-container">
-        <!-- Static Product 1 -->
-        <div class="card" data-type="product" data-name="Smart TV">
+
+        <div class="card" data-type="product" data-name="Air Conditioner">
           <div class="card-image">
-            <img src="./photo/tv.avif" alt="Smart TV">
+            <img src="./photo/ac.jpg" alt="Air Conditioner">
           </div>
           <div class="card-content">
-            <h3>Smart TV</h3>
-            <p>Why a Smart TV Is a Smart Choice in 2025...</p>
+            <h3>Air Conditioner</h3>
+            <p>An air conditioner is an essential home appliance that keeps your living space cool and comfortable, especially during hot summer months. Modern ACs come in various types like split, window, portable, and inverter models, each designed to suit different room sizes and cooling needs. They not only regulate temperature but also improve air quality by filtering dust and allergens. Energy-efficient models save electricity while providing optimal cooling</p>
+            <div class="reviews-list"><p>No reviews yet.</p></div>
+            <div class="review-section">
+            <textarea placeholder="Write your review..."></textarea>
+              <button class="btn" onclick="submitReview(this)">Submit Review</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-type="product" data-name="Refrigerator">
+          <div class="card-image">
+            <img src="./photo/Refrigerator.avif" alt="Refrigerator">
+          </div>
+          <div class="card-content">
+            <h3>Refrigerator</h3>
+            <p>A refrigerator is a must-have home appliance that keeps your food fresh and beverages cool. It comes in various types such as single-door, double-door, side-by-side, and smart refrigerators, catering to different family sizes and storage needs. Modern refrigerators feature energy-efficient technology, frost-free operation, adjustable shelves, and smart cooling systems to maintain the right temperature for different types of food. Some models also include advanced features like water dispensers, ice makers, and Wi-Fi connectivity.</p>
             <div class="reviews-list"><p>No reviews yet.</p></div>
             <div class="review-section">
               <textarea placeholder="Write your review..."></textarea>
@@ -48,42 +53,25 @@
           </div>
         </div>
 
-        <!-- Static Product 2 -->
-        <div class="card" data-type="product" data-name="Smart Watch">
+        <div class="card" data-type="product" data-name="Microwave">
           <div class="card-image">
-            <img src="./photo/watch.jpeg" alt="Smart Watch">
+            <img src="./photo/microwaves.jpeg" alt="Microwave">
           </div>
           <div class="card-content">
-            <h3>Smart Watch</h3>
-            <p>⌚ Why a Smart Watch Is More Than Just a Watch...</p>
+            <h3>Microwave</h3>
+            <p>A microwave oven is a versatile kitchen appliance that makes cooking, reheating, and defrosting food quick and convenient. Available in various types like solo, grill, and convection models, microwaves cater to different cooking needs, from simple reheating to baking and grilling. Modern microwaves come with smart features such as preset cooking modes, timers, child locks, and sensor cooking, making them safe and easy to use.</p>
             <div class="reviews-list"><p>No reviews yet.</p></div>
             <div class="review-section">
-              <textarea placeholder="Write your review..."></textarea>
+           <textarea placeholder="Write your review..."></textarea>
               <button class="btn" onclick="submitReview(this)">Submit Review</button>
             </div>
           </div>
         </div>
 
-        <!-- Static Product 3 -->
-        <div class="card" data-type="product" data-name="Headphones">
-          <div class="card-image">
-            <img src="./photo/headphone.jpg" alt="Headphones">
-          </div>
-          <div class="card-content">
-            <h3>Headphones</h3>
-            <p>🎧 Elevate Your Sound with the Right Headphones...</p>
-            <div class="reviews-list"><p>No reviews yet.</p></div>
-            <div class="review-section">
-              <textarea placeholder="Write your review..."></textarea>
-              <button class="btn" onclick="submitReview(this)">Submit Review</button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </div>
 
-  <!-- Blog System -->
   <div class="blog-system">
     <h2>Write a Blog</h2>
     <input type="text" id="title" placeholder="Blog Title">
@@ -94,7 +82,7 @@
 
   <script>
     // =============== REVIEW SYSTEM ===============
-    function createReviewElement(text, type, parentKey, index = null) {
+    function createReviewElement(text, type, parentKey) {
       const div = document.createElement("div");
       div.className = "review-item";
 
@@ -105,26 +93,28 @@
       delBtn.className = "delete-review-btn";
       delBtn.textContent = "❌";
 
-      // Delete review from DOM + localStorage
+      // Delete review from DOM + localStorage 
       delBtn.addEventListener("click", () => {
-        div.remove();
+        const reviewList = div.parentElement;
         if (type === "product") {
           let key = "product_" + parentKey;
           let reviews = JSON.parse(localStorage.getItem(key)) || [];
           reviews = reviews.filter(r => r !== text);
           localStorage.setItem(key, JSON.stringify(reviews));
+          div.remove();
           if (reviews.length === 0) {
-            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+            reviewList.innerHTML = "<p>No reviews yet.</p>";
           }
         } else if (type === "blog") {
-          let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+          let blogs = JSON.parse(localStorage.getItem("homeBlogs")) || [];
           let blog = blogs.find(b => b.id == parentKey);
           if (blog) {
             blog.reviews = blog.reviews.filter(r => r !== text);
-            localStorage.setItem("blogs", JSON.stringify(blogs));
-          }
-          if (div.parentElement.children.length === 0) {
-            div.parentElement.innerHTML = "<p>No reviews yet.</p>";
+            localStorage.setItem("homeBlogs", JSON.stringify(blogs));
+            div.remove();
+            if (blog.reviews.length === 0) {
+              reviewList.innerHTML = "<p>No reviews yet.</p>";
+            }
           }
         }
       });
@@ -163,32 +153,31 @@
         reviews.push(reviewText);
         localStorage.setItem(key, JSON.stringify(reviews));
       } else if (type === "blog") {
-        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        let blogs = JSON.parse(localStorage.getItem("homeBlogs")) || [];
         let index = blogs.findIndex(b => b.id == name);
         if (index > -1) {
           blogs[index].reviews.push(reviewText);
-          localStorage.setItem("blogs", JSON.stringify(blogs));
+          localStorage.setItem("homeBlogs", JSON.stringify(blogs));
         }
       }
     }
 
-    function loadReviews() {
+    function loadProductReviews() {
       // Products
       document.querySelectorAll(".card[data-type='product']").forEach(card => {
         let name = card.dataset.name;
         let reviewList = card.querySelector(".reviews-list");
         let key = "product_" + name;
         let reviews = JSON.parse(localStorage.getItem(key)) || [];
-        reviewList.innerHTML = reviews.length > 0
-          ? ""
-          : "<p>No reviews yet.</p>";
-        reviews.forEach(r => {
-          reviewList.appendChild(createReviewElement(r, "product", name));
-        });
+        if (reviews.length > 0) {
+          reviewList.innerHTML = "";
+          reviews.forEach(r => {
+            reviewList.appendChild(createReviewElement(r, "product", name));
+          });
+        } else {
+          reviewList.innerHTML = "<p>No reviews yet.</p>";
+        }
       });
-
-      // Blogs
-      displayBlogs();
     }
 
     // =============== BLOG SYSTEM ===============
@@ -216,9 +205,9 @@
     }
 
     function saveBlog(id, title, content, image) {
-      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let blogs = JSON.parse(localStorage.getItem("homeBlogs")) || [];
       blogs.unshift({ id, title, content, image, reviews: [] });
-      localStorage.setItem("blogs", JSON.stringify(blogs));
+      localStorage.setItem("homeBlogs", JSON.stringify(blogs));
       displayBlogs();
 
       // Clear form
@@ -228,20 +217,20 @@
     }
 
     function deleteBlog(id) {
-      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let blogs = JSON.parse(localStorage.getItem("homeBlogs")) || [];
       blogs = blogs.filter(b => b.id != id);
-      localStorage.setItem("blogs", JSON.stringify(blogs));
+      localStorage.setItem("homeBlogs", JSON.stringify(blogs));
       displayBlogs();
     }
 
     function displayBlogs() {
-      let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      let blogs = JSON.parse(localStorage.getItem("homeBlogs")) || [];
       let container = document.getElementById("cards-container");
+      const staticCards = document.querySelector("section .grid").dataset.static || document.querySelector("section .grid").innerHTML;
+      container.innerHTML = staticCards;
+      loadProductReviews();
 
-      // Remove old blogs
-      container.querySelectorAll(".card[data-type='blog']").forEach(el => el.remove());
-
-      blogs.forEach(blog => {
+      blogs.forEach((blog, i) => {
         let div = document.createElement("div");
         div.className = "card";
         div.dataset.type = "blog";
@@ -275,14 +264,13 @@
       });
     }
 
-    window.onload = loadReviews;
+    window.onload = () => {
+      const grid = document.querySelector("section .grid");
+      grid.dataset.static = grid.innerHTML;
+      displayBlogs();
+    };
   </script>
+
 </body>
+
 </html>
-
-
-
-
-
-
-
